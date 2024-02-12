@@ -4,6 +4,7 @@ services:
   mongodb:
     image: mongo:7
     command: mongod --port 27017
+    restart: unless-stopped
     networks:
       - minha_rede
     volumes:
