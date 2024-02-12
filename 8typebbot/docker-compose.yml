@@ -5,6 +5,7 @@ services:
     image: elestio/typebot-builder:latest
     ports:
       - "3001:3000"
+    restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://postgres:senha do postegre aqui @postgres:5432/typebot #aonde ta informado coloque a senha do postegre 
       ENCRYPTION_SECRET: 7/l2NKGhkMUHRV0dt/g8hD2YNopCrAeH
@@ -38,6 +39,7 @@ services:
     image: elestio/typebot-viewer:latest
     ports:
       - "3002:3001"
+    restart: unless-stopped
      environment:
       DATABASE_URL: postgresql://postgres:senha do postegre aqui @postgres:5432/typebot #aonde ta informado coloque a senha do postegre 
       ENCRYPTION_SECRET: 7/l2NKGhkMUHRV0dt/g8hD2YNopCrAeH
