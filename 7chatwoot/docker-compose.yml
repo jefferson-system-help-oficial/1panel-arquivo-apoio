@@ -2,6 +2,7 @@ version: "3.7"
 
 ##############
 #
+# subir primeiro na versao v3.3.1 e depois na  latest
 # Execute o mando para migrar o banco:
 #
 # bundle exec rails db:chatwoot_prepare
