@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  minio:
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9001"
+    networks:
+      - minha_rede
+    ports:
+      - 9001:9001
+      - 9000:9000
+    volumes:
+      - minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=user para minio  # troque a senha e user 
+      - MINIO_ROOT_PASSWORD=senha para o minio  # troque a senha e user 
+      - MINIO_BROWSER_REDIRECT_URL=https://dominio para o minio # 9001 colque aqui seu dominio  para o console 
+      - MINIO_SERVER_URL=https://dominio para api do minio  # 9000 colque aqui seu dominio  para  api 
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+
+volumes:
+  minio_data:
+    external: true
+    name: minio_data
+
+networks:
+  minha_rede:
+    external: true
+    name: minha_rede
+
+#configurado para usar com 1panel  video aula no canal do youtube @SYSTEMHELP link https://www.youtube.com/@SYSTEMHELP
+## GOSTOU QUE TAL ME DAR UM CAFE  AQUI ESTA MEU PIX : CNPJ :  48.590.314/0001-18 
+##  OBRIGADO 

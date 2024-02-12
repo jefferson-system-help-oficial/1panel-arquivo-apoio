@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    ports:
+      # These ports are in format <host-port>:<container-port> #aqui nao tem oaque mecher é so copia e colar # 
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 256M
+    networks:
+      - minha_rede
+      - typebbot_default
+
+
+volumes:
+  npm_data:
+    external: true
+  npm_letsencrypt:
+    external: true
+
+networks:
+  minha_rede:
+    external: true
+  typebbot_default:
+    external: true
+
+#configurado para usar com 1panel  video aula no canal do youtube @SYSTEMHELP link https://www.youtube.com/@SYSTEMHELP
+## GOSTOU QUE TAL ME DAR UM CAFE  AQUI ESTA MEU PIX : CNPJ :  48.590.314/0001-18 
+##  OBRIGADO 
