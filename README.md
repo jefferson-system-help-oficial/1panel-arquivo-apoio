@@ -19,6 +19,9 @@ SYSTEM HELP APOIO
 # instalaçao e configuraçao da vps  1PANEL com dominio ssl  ngix
 
 curl -sSL https://raw.githubusercontent.com/jefferson-system-help-oficial/1Panel-brasil-oficial/dev/quick_start.sh -o quick_start.sh && sudo bash quick_start.sh
+
+
+ exemolo do canla do youtube 
  
  sequecia :: enter 
   porta  99
