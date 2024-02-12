@@ -1,0 +1,76 @@
+version: "3.8"
+
+services:
+  typebot_builder:
+    image: elestio/typebot-builder:latest
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:senha do postegre aqui @postgres:5432/typebot #aonde ta informado coloque a senha do postegre 
+      ENCRYPTION_SECRET: 7/l2NKGhkMUHRV0dt/g8hD2YNopCrAeH
+      NEXTAUTH_URL: https://coloque o dominio para acessa o typeboot #coloque o dominio para acesar seu typeboot
+      NEXT_PUBLIC_VIEWER_URL: https://coloque o dominio para acessar o boot # esse dominio e para o boot do typeboot 
+      NEXTAUTH_URL_INTERNAL: http://localhost:3000
+      ADMIN_EMAIL: seuemailaqui #coloque seu email smtp admin aqui 
+      DISABLE_SIGNUP: "false"
+      SMTP_HOST: smtp.gmail.com
+      SMTP_USERNAME: seuemailaqui
+      SMTP_PASSWORD: senha do smtp #coloque a senha do app ou  smtp aqui 
+      NEXT_PUBLIC_SMTP_FROM: "TYPEBOOT <seuemailaqui>" #coloque seu email smtp admin aqui 
+      SMTP_PORT: 587
+      SMTP_SECURE: "false"
+      S3_ACCESS_KEY: credencia so minio #coloque aqui su keyuser do minio 
+      S3_SECRET_KEY: coloque aqui sua sneha minio #coloque sua key minio aqui 
+      S3_BUCKET: typebot #nome do banker 
+      S3_ENDPOINT: domnio api do minio # coloque  seu dominio api minio aqui 
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1512M
+
+  typebot_viewer:
+    image: elestio/typebot-viewer:latest
+    ports:
+      - "3002:3001"
+     environment:
+      DATABASE_URL: postgresql://postgres:senha do postegre aqui @postgres:5432/typebot #aonde ta informado coloque a senha do postegre 
+      ENCRYPTION_SECRET: 7/l2NKGhkMUHRV0dt/g8hD2YNopCrAeH
+      NEXTAUTH_URL: https://coloque o dominio para acessa o typeboot #coloque o dominio para acesar seu typeboot
+      NEXT_PUBLIC_VIEWER_URL: https://coloque o dominio para acessar o boot # esse dominio e para o boot do typeboot 
+      NEXTAUTH_URL_INTERNAL: http://localhost:3000
+      ADMIN_EMAIL: seuemailaqui #coloque seu email smtp admin aqui 
+      DISABLE_SIGNUP: "false"
+      SMTP_HOST: smtp.gmail.com
+      SMTP_USERNAME: seuemailaqui
+      SMTP_PASSWORD: senha do smtp #coloque a senha do app ou  smtp aqui 
+      NEXT_PUBLIC_SMTP_FROM: "TYPEBOOT <seuemailaqui>" #coloque seu email smtp admin aqui 
+      SMTP_PORT: 587
+      SMTP_SECURE: "false"
+      S3_ACCESS_KEY: credencia so minio #coloque aqui su keyuser do minio 
+      S3_SECRET_KEY: coloque aqui sua sneha minio #coloque sua key minio aqui 
+      S3_BUCKET: typebot #nome do banker 
+      S3_ENDPOINT: domnio api do minio # coloque  seu dominio api minio aqui 
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1512M
+
+networks:
+  minha_rede:
+    external: true
+
+#configurado para usar com 1panel  video aula no canal do youtube @SYSTEMHELP link https://www.youtube.com/@SYSTEMHELP
+## GOSTOU QUE TAL ME DAR UM CAFE  AQUI ESTA MEU PIX : CNPJ :  48.590.314/0001-18 
+##  OBRIGADO 
