@@ -98,7 +98,7 @@ update installation_configs set locked = false;
 
  typebot_builder : 3000
 
- typebot_viewer  : 3001
+ typebot_viewer  : 3000
 
 
 
