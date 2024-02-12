@@ -5,6 +5,7 @@ services:
     image: postgres:14
     environment:
       - POSTGRES_PASSWORD=senha para o postegre #coloque aqui a senha do seu postegres 
+    restart: unless-stopped
     networks:
       - minha_rede
       - typebbot_default
