@@ -3,6 +3,7 @@ version: "3.7"
 services:
   redis:
     image: redis:latest # nao tem oque fazer so copia e colar 
+    restart: unless-stopped
     command: [
         "redis-server",
         "--appendonly",
