@@ -63,6 +63,7 @@ services:
   chatwoot_sidekiq:
     image: chatwoot/chatwoot:latest
     command: bundle exec sidekiq -C config/sidekiq.yml
+    restart: unless-stopped
     volumes:
       - chatwoot_data:/app/storage
     networks:
